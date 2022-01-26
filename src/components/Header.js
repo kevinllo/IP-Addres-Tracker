@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import SearchButton from "./SearchButton";
 
 function Header() {
   return (
     <Container>
       <Title>IP Adress Tracker</Title>
+      <SearchButton />
     </Container>
   );
 }
@@ -34,5 +36,6 @@ const Container = styled.div`
 const Title = styled.h1`
   text-align: center;
   color: white;
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: 1.5px;
 `;
