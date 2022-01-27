@@ -11,10 +11,7 @@ function ContainerData() {
 
       <Card>
         <span>LOCATION</span>
-        <p>
-          Brooklyn, NY <br />
-          10001
-        </p>
+        <p>San Salvador, ESA</p>
       </Card>
       <Card>
         <span>TIMEZONE</span>
@@ -30,14 +27,32 @@ function ContainerData() {
 
 export default ContainerData;
 const Container = styled.div`
-/*   outline: 1px solid black; */
   position: absolute;
-  bottom: -30%;
+  top: 80%;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   width: 80%;
+  @media (min-width: 1440px) {
+    width: 70%;
+  }
+  @media (max-width: 768px) {
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  @media (max-width: 590px) {
+    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    bottom: -85%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  @media (max-width: 375px) {
+    width: 80%;
+  }
   padding: 18px 18px 30px 18px;
   margin: 0 auto;
   border-radius: 10px;
@@ -46,6 +61,9 @@ const Container = styled.div`
 const Card = styled.div`
   border-left: 1px solid #bfbfbf;
   padding: 0px 15px;
+  @media (max-width: 590px) {
+    border-left: none;
+  }
   &:first-child {
     border-left: 0;
   }

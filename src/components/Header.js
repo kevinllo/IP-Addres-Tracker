@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SearchButton from "./SearchButton";
 import ContainerData from "./ContainerData";
 
+
 function Header() {
   return (
     <Container>
@@ -40,4 +41,7 @@ const Title = styled.h1`
   color: white;
   font-weight: 500;
   letter-spacing: 1.2px;
+  @media (max-width: 375px) {
+   font-size: 25px;
+  }
 `;
