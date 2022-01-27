@@ -2,12 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 function SearchButton() {
+  const getInput = (e) => {
+    e.preventDefault();
+    console.log(e.currentTarget);
+  };
   return (
     <Container>
-      <Buttons>
-        <input type="search" />
+      <Form onSubmit={getInput}>
+        <input
+          type="search"
+          placeholder="Search por any API Address or domain"
+        />
         <input type="submit" value="" />
-      </Buttons>
+      </Form>
     </Container>
   );
 }
@@ -15,13 +22,15 @@ function SearchButton() {
 export default SearchButton;
 
 const Container = styled.div`
+  /* outline: 1px solid black; */
   width: 100%;
   height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 60px;
 `;
-const Buttons = styled.div`
+const Form = styled.form`
   display: flex;
   width: 600px;
   height: 50px;

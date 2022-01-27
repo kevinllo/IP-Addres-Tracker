@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import SearchButton from "./SearchButton";
+import ContainerData from "./ContainerData";
 
 function Header() {
   return (
     <Container>
-      <Title>IP Adress Tracker</Title>
+      <Title>IP Address Tracker</Title>
       <SearchButton />
+      <ContainerData />
     </Container>
   );
 }
@@ -16,8 +18,8 @@ export default Header;
 const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 250px;
-  padding: 20px 0;
+  height: 220px;
+  padding: 20px;
   outline: 1px solid black;
   &:before {
     content: "";
@@ -36,6 +38,6 @@ const Container = styled.div`
 const Title = styled.h1`
   text-align: center;
   color: white;
-  font-weight: 400;
-  letter-spacing: 1.5px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
 `;
