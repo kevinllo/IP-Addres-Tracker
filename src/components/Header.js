@@ -3,13 +3,12 @@ import styled from "styled-components";
 import SearchButton from "./SearchButton";
 import ContainerData from "./ContainerData";
 
-
 function Header() {
   return (
     <Container>
       <Title>IP Address Tracker</Title>
       <SearchButton />
-      <ContainerData />
+      {/*   <ContainerData /> */}
     </Container>
   );
 }
@@ -19,9 +18,8 @@ export default Header;
 const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 300px;
   padding: 20px;
-  outline: 1px solid black;
   &:before {
     content: "";
     position: absolute;
@@ -38,10 +36,8 @@ const Container = styled.div`
 `;
 const Title = styled.h1`
   text-align: center;
+  font-size: 1.5rem;
   color: white;
   font-weight: 500;
   letter-spacing: 1.2px;
-  @media (max-width: 375px) {
-   font-size: 25px;
-  }
 `;

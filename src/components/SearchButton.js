@@ -9,57 +9,63 @@ function SearchButton() {
   return (
     <Container>
       <Form onSubmit={getInput}>
-        <input
-          type="search"
-          placeholder="Search por any API Address or domain"
-        />
-        <input type="submit" value="" />
+        <InputContainer>
+          <input
+            type="search"
+            placeholder="Search por any API Address or domain"
+          />
+        </InputContainer>
+        <IconContainer>
+          <span>
+            <img src="/images/icon-search.svg" />
+          </span>
+        </IconContainer>
       </Form>
     </Container>
   );
 }
 
 export default SearchButton;
-
 const Container = styled.div`
-  /* outline: 1px solid black; */
+  margin: 20px 0;
   width: 100%;
-  height: 70px;
+  height: 40px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 60px;
 `;
 const Form = styled.form`
   display: flex;
-  width: 600px;
-  height: 50px;
-  & input {
-    height: 100%;
+  width: 100%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 10px;
+`;
+
+const InputContainer = styled.div`
+  flex: 1;
+  padding: 0 15px;
+  input {
     border: none;
-  }
-  & input[type="search"] {
-    flex: 1;
-    border-radius: 12px 0px 0px 12px;
-    padding: 0px 25px;
-    font-size: 18px;
-    &:focus {
+    width: 100%;
+    height: 100%;
+    &:focus{
       outline: none;
     }
   }
-  & input[type="submit"] {
-    padding: 0px 25px;
-    border-radius: 0px 12px 12px 0px;
-    background-color: #303030;
-    color: white;
-    cursor: pointer;
-    background-image: url("/images/icon-arrow.svg");
-    background-size: 20%;
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: all 250ms;
-    &:hover {
-      background-color: #444343;
+`;
+const IconContainer = styled.div`
+  background: black;
+  padding: 0 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  span {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    img {
+      height: 20px;
+      width: 20px;
     }
   }
 `;
