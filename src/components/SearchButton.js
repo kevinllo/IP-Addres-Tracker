@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-function SearchButton() {
-  const getInput = (e) => {
+function SearchButton({ setInput }) {
+  const [ip, setIp] = useState("");
+  const handleChange = (e) => {
+    setIp(e.target.value);
+  };
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
+    if (ip.trim().length > 0) {
+      setInput(ip);
+    }
   };
   return (
     <Container>
-      <Form onSubmit={getInput}>
+      <Form onSubmit={handleSubmit}>
         <InputContainer>
           <input
             type="search"
-            placeholder="Search por any API Address or domain"
+            placeholder="Search for any API Address or domain"
+            onChange={handleChange}
+            value={ip}
           />
         </InputContainer>
         <IconContainer>
           <span>
-            <img src="/images/icon-search.svg" />
+            <img src="/images/icon-search.svg" alt="icon search" />
           </span>
         </IconContainer>
       </Form>
@@ -29,7 +37,7 @@ export default SearchButton;
 const Container = styled.div`
   margin: 20px 0;
   width: 100%;
-  height: 40px;
+  height: 50px;
   display: flex;
   justify-content: center;
 `;
@@ -45,10 +53,18 @@ const InputContainer = styled.div`
   flex: 1;
   padding: 0 15px;
   input {
+    ::placeholder {
+      font-size: 15px;
+    }
     border: none;
     width: 100%;
     height: 100%;
-    &:focus{
+    @media (min-width: 575px) {
+      ::placeholder {
+        font-size: 17px;
+      }
+    }
+    &:focus {
       outline: none;
     }
   }
@@ -59,6 +75,7 @@ const IconContainer = styled.div`
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   span {
+    cursor: pointer;
     display: flex;
     align-items: center;
     height: 100%;

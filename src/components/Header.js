@@ -1,24 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import SearchButton from "./SearchButton";
 import ContainerData from "./ContainerData";
 
 function Header() {
+  const [input, setInput] = useState(null);
   return (
     <Container>
       <Title>IP Address Tracker</Title>
-      <SearchButton />
-      {/*   <ContainerData /> */}
+      <SearchButton setInput={setInput} />
+      <ContainerData input={input} />
     </Container>
   );
 }
-
 export default Header;
 
 const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 250px;
   padding: 20px;
   &:before {
     content: "";
@@ -40,4 +40,8 @@ const Title = styled.h1`
   color: white;
   font-weight: 500;
   letter-spacing: 1.2px;
+
+  @media (min-width: 575px) {
+    font-size: 2rem;
+  }
 `;
