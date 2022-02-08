@@ -18,19 +18,24 @@ function ContainerData({ input }) {
     isp: "Google LLC",
   });
 
-  const requestData = async () => {
-    const response = await axios.get(
-      `https://geo.ipify.org/api/v2/country,city?apiKey=at_n2usDqsUFZLp3ocxljYWnSh3FXLH1&ipAddress=${
-        input ? input : "8.8.8.8"
-      }`
-    );
-    console.log(response.data);
-    setData(response.data);
-    mapContext.setCoordinates({lat: response.data.location.lat, lng: response.data.location.lng});
-  };
   useEffect(() => {
-    requestData();
+    const getData = () => {
+      const response = await axios.get(
+        `https://geo.ipify.org/api/v2/country,city?apiKey=at_jqNYGvc9LqaGL9WTHR9dWhMLwDf8k&ipAddress=${
+          input ? input : "8.8.8.8"
+        }`
+      );
+      console.log(response.data);
+      console.log(response.status);
+      setData(response.data);
+      mapContext.setCoordinates({
+        lat: response.data.location.lat,
+        lng: response.data.location.lng,
+      });
+    };
+    getData();
   }, [input]);
+
   return (
     <Main>
       <Container>
@@ -60,10 +65,10 @@ export default ContainerData;
 const Main = styled.main`
   position: relative;
   margin: 0 auto;
-  width: 100%;
   max-width: 1000px;
 `;
 const Container = styled.div`
+  max-height: 300px;
   position: absolute;
   top: 5px;
   left: 0;
@@ -76,7 +81,7 @@ const Container = styled.div`
   text-align: center;
   border-radius: 10px;
   background-color: white;
-  
+
   @media (min-width: 575px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
@@ -106,5 +111,12 @@ const Container = styled.div`
   }
 `;
 const Card = styled.div`
-  /*  outline: 1px solid red */
+  padding: 0 8px;
+  height: 100%;
+  max-height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  @media (min-width: 767px) {
+    overflow: hidden;
+  }
 `;

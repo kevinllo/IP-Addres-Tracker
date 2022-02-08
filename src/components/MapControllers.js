@@ -1,15 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { useMap } from "react-leaflet";
-import MapContext from "../context/mapContext";
-import { TileLayer, Marker } from "react-leaflet";
+import React, { useEffect } from "react";
+import { TileLayer, Marker, useMap } from "react-leaflet";
 
-function MapControllers() {
+const MapControllers = ({ coordinates }) => {
   const map = useMap();
-  const mapContext = useContext(MapContext);
-  const coordinates = [mapContext.coordinates.lat, mapContext.coordinates.lng];
   useEffect(() => {
     map.setView(coordinates, 13);
-  }, [coordinates]);
+  }, [map, coordinates]);
   return (
     <>
       <TileLayer
@@ -19,6 +15,5 @@ function MapControllers() {
       <Marker position={coordinates}></Marker>
     </>
   );
-}
-
+};
 export default MapControllers;
