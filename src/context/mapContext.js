@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-const MapContext = createContext(null);
+const MapContext = createContext();
 
 export const MapProvider = ({children}) => {
     const [coordinates, setCoordinates] = useState({

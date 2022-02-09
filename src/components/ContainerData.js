@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 function ContainerData({ input }) {
   const mapContext = useContext(MapContext);
+  const [error, setError] = useState(null);
   const [data, setData] = useState({
     ip: "8.8.8.8",
     location: {
@@ -19,15 +20,18 @@ function ContainerData({ input }) {
   });
 
   useEffect(() => {
-    const getData = () => {
-      const response = await axios.get(
-        `https://geo.ipify.org/api/v2/country,city?apiKey=at_jqNYGvc9LqaGL9WTHR9dWhMLwDf8k&ipAddress=${
-          input ? input : "8.8.8.8"
-        }`
-      );
-      console.log(response.data);
-      console.log(response.status);
+    const getData = async () => {
+      const response = await axios
+        .get(
+          `https://geo.ipify.org/api/v2/country,city?apiKey=at_jqNYGvc9LqaGL9WTHR9dWhMLwDf8k&ipAddress=${
+            input ? input : "8.8.8.8"
+          }`
+        )
+        .catch((error) => {
+          if (error.response.statusText !== "OK") setError("Not available");
+        });
       setData(response.data);
+      setError(null);
       mapContext.setCoordinates({
         lat: response.data.location.lat,
         lng: response.data.location.lng,
@@ -41,20 +45,28 @@ function ContainerData({ input }) {
       <Container>
         <Card>
           <span>IP ADDRRES</span>
-          <p>{data.ip}</p>
+          {error === null ? <p>{data.ip}</p> : <p>{error}</p>}
         </Card>
 
         <Card>
           <span>LOCATION</span>
-          <p>{`${data.location.city} , ${data.location.country}`}</p>
+          {error === null ? (
+            <p>{`${data.location.city} , ${data.location.country}`}</p>
+          ) : (
+            <p>{error}</p>
+          )}
         </Card>
         <Card>
           <span>TIMEZONE</span>
-          <p>{`UTC${data.location.timezone}`}</p>
+          {error === null ? (
+            <p>{`UTC${data.location.timezone}`}</p>
+          ) : (
+            <p>{error}</p>
+          )}
         </Card>
         <Card>
           <span>ISP</span>
-          <p>{`${data.isp}`}</p>
+          {error === null ? <p>{`${data.isp}`}</p> : <p>{error}</p>}
         </Card>
       </Container>
     </Main>
@@ -102,7 +114,7 @@ const Container = styled.div`
     }
   }
   p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #4f4f4f;
     @media (min-width: 1024px) {

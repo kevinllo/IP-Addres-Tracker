@@ -54,14 +54,14 @@ const InputContainer = styled.div`
   padding: 0 15px;
   input {
     ::placeholder {
-      font-size: 15px;
+      font-size: 12px;
     }
     border: none;
     width: 100%;
     height: 100%;
     @media (min-width: 575px) {
       ::placeholder {
-        font-size: 17px;
+        font-size: 15px;
       }
     }
     &:focus {
