@@ -42,33 +42,45 @@ function ContainerData({ input }) {
 
   return (
     <Main>
-      <Container>
-        <Card>
-          <span>IP ADDRRES</span>
-          {error === null ? <p>{data.ip}</p> : <p>{error}</p>}
-        </Card>
-
-        <Card>
-          <span>LOCATION</span>
-          {error === null ? (
+      {error ? (
+        <Container>
+          <Card>
+            <span>IP ADDRRES</span>
+            <p> {error}</p>
+          </Card>
+          <Card>
+            <span>LOCATION</span>
+            <p> {error}</p>
+          </Card>
+          <Card>
+            <span>TIMEZONE</span>
+            <p> {error}</p>
+          </Card>
+          <Card>
+            <span>ISP</span>
+            <p> {error}</p>
+          </Card>
+        </Container>
+      ) : (
+        <Container>
+          <Card>
+            <span>IP ADDRRES</span>
+            <p> {data.ip}</p>
+          </Card>
+          <Card>
+            <span>LOCATION</span>
             <p>{`${data.location.city} , ${data.location.country}`}</p>
-          ) : (
-            <p>{error}</p>
-          )}
-        </Card>
-        <Card>
-          <span>TIMEZONE</span>
-          {error === null ? (
+          </Card>
+          <Card>
+            <span>TIMEZONE</span>
             <p>{`UTC${data.location.timezone}`}</p>
-          ) : (
-            <p>{error}</p>
-          )}
-        </Card>
-        <Card>
-          <span>ISP</span>
-          {error === null ? <p>{`${data.isp}`}</p> : <p>{error}</p>}
-        </Card>
-      </Container>
+          </Card>
+          <Card>
+            <span>ISP</span>
+            <p>{`${data.isp}`}</p>
+          </Card>
+        </Container>
+      )}
     </Main>
   );
 }
