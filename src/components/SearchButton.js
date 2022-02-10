@@ -8,9 +8,8 @@ function SearchButton({ setInput }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (ip.trim().length > 0) {
-      setInput(ip);
-    }
+    setIp("");
+    if (ip.trim().length > 0) setInput(ip);
   };
   return (
     <Container>
