@@ -7,7 +7,7 @@ const Map = () => {
   const mapContext = useContext(MapContext);
   const coordinates = [mapContext.coordinates.lat, mapContext.coordinates.lng];
   return (
-    <MapContainer center={coordinates} zoom={13} scrollWheelZoom={true}>
+    <MapContainer center={coordinates} zoom={13} scrollWheelZoom={true} zoomControl={false}>
       <MapControllers coordinates={coordinates} />
     </MapContainer>
   );
