@@ -1,4 +1,4 @@
-# A IP Addres Tracker App for searching your location.
+# A IP Addres Tracker App for searching your current location.
 
 To start using the project, you must install the dependencies required with the command: \ 
 
