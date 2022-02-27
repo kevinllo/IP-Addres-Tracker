@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import MapContext from "../context/mapContext";
+import Error from "./Error";
 import styled from "styled-components";
 
 function ContainerData({ input }) {
@@ -28,7 +29,7 @@ function ContainerData({ input }) {
           }`
         )
         .catch((error) => {
-          if (error.response.statusText !== "OK") setError("Not available");
+          setError(error.message);
         });
       setData(response.data);
       setError(null);
@@ -43,24 +44,7 @@ function ContainerData({ input }) {
   return (
     <Main>
       {error ? (
-        <Container>
-          <Card>
-            <span>IP ADDRRES</span>
-            <p> {error}</p>
-          </Card>
-          <Card>
-            <span>LOCATION</span>
-            <p> {error}</p>
-          </Card>
-          <Card>
-            <span>TIMEZONE</span>
-            <p> {error}</p>
-          </Card>
-          <Card>
-            <span>ISP</span>
-            <p> {error}</p>
-          </Card>
-        </Container>
+        <Error error={error} />
       ) : (
         <Container>
           <Card>
