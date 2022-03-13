@@ -24,7 +24,7 @@ function ContainerData({ input }) {
     const getData = async () => {
       const response = await axios
         .get(
-          `https://geo.ipify.org/api/v2/country,city?apiKey=at_jqNYGvc9LqaGL9WTHR9dWhMLwDf8k&ipAddress=${
+          `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_APIKEY}&ipAddress=${
             input ? input : "8.8.8.8"
           }`
         )
